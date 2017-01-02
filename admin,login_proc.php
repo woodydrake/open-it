@@ -3,13 +3,14 @@ include_once "../__RootDIR__.php";
 include_once $RootDIR."/_include/_header.php";
 
 $admin_id = $_REQUEST["admin_id"];
-$admin_pw = hash("sha256", $_REQUEST["admin_pw"]);
+//$admin_pw = hash("sha256", $_REQUEST["admin_pw"]);
+$admin_pw = $_REQUEST["admin_pw"];
 $rtn_page = $_REQUEST["rtn_page"];
 
 if( !empty($admin_id) &&  !empty($admin_pw)){
 
-	//$sql = "select * from t_member where where user_id = '$admin_id'";
-	$sql = "select * from t_member where user_id = '$admin_id' and user_pwd = '$admin_pw' and (level in (2,9) or member_type_h = '1' or member_type_m = '1') and is_able_teaching = 'Y' or user_id = 'admin'";
+	$sql = "select * from t_member where user_id = '$admin_id'";
+	//$sql = "select * from t_member where user_id = '$admin_id' and user_pwd = '$admin_pw' and (level in (2,9) or member_type_h = '1' or member_type_m = '1') and is_able_teaching = 'Y' or user_id = 'admin'";
 	$result = mysql_query($sql);
 	$affect = mysql_num_rows($result);
 
